@@ -1,4 +1,4 @@
-package com.Corona.Virus;
+package com.Corona.Virus.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
