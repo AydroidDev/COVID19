@@ -68,9 +68,9 @@ public class NewsFragment extends Fragment  implements SwipeRefreshLayout.OnRefr
 
     private void addtorecycler(Example Obj) {
         List<Article> mList = Obj.getArticles();
-        for (Article a: mList){
-            Log.e("DATA",a.getTitle());
-        }
+//        for (Article a: mList){
+//            Log.e("DATA",a.getTitle());
+//        }
         NewsAdapter adapter = new NewsAdapter(getContext(),mList);
         mRec.setAdapter(adapter);
     }
