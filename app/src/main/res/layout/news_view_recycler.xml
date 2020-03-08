@@ -4,8 +4,9 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="10dp"
-    android:layout_margin="10dp"
-    android:padding="10dp"
+    android:layout_marginLeft="2dp"
+    android:layout_marginRight="2dp"
+    android:layout_marginTop="2dp"
     app:cardUseCompatPadding="true"
     android:id="@+id/recyclerNewsCard">
 <RelativeLayout
@@ -15,30 +16,59 @@
         android:layout_width="match_parent"
         android:layout_height="230dp"
         android:scaleType="centerCrop"
+        android:src="@drawable/demo"
         android:id="@+id/imageNewsRecycler"
         android:contentDescription="@string/app_name" />
-    <TextView
+    <com.wang.avi.AVLoadingIndicatorView
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:id="@+id/imageProgress"
+        android:layout_centerHorizontal="true"
+        app:indicatorName="BallPulseIndicator"
+        />
+
+    <TextView
+        android:id="@+id/titleNewsRecycler"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/imageNewsRecycler"
         android:layout_marginTop="10dp"
-        android:id="@+id/titleNewsRecycler"
-        android:ellipsize="marquee"
-        />
+        android:paddingLeft="10dp"
+        android:textColor="#000"
+        android:textStyle="bold"
+        android:paddingRight="10dp"
+        android:textSize="18sp"
+        android:text="Title"
+        android:fontFamily="@font/overpass_semibold" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/descriptionNewsRecycler"
         android:layout_below="@+id/titleNewsRecycler"
-        android:layout_marginTop="10dp"
-        android:ellipsize="marquee"/>
+        android:layout_marginTop="5dp"
+        android:text="Description"
+        android:singleLine="true"
+        android:textColor="#000"
+        android:fontFamily="@font/overpass"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        android:ellipsize="end"/>
+
     <TextView
+        android:id="@+id/publishedDateRecycler"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
         android:layout_below="@+id/descriptionNewsRecycler"
-        android:ellipsize="marquee"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
-        android:layout_marginEnd="5dp"/>
+        android:textColor="#fff"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:background="@drawable/published_date_bg"
+        android:ellipsize="marquee"
+        android:fontFamily="@font/overpass"
+        android:text="Published" />
 </RelativeLayout>
 </androidx.cardview.widget.CardView>

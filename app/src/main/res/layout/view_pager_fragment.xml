@@ -4,10 +4,19 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title="CoronaVirus"
+        android:background="@color/colorPrimary"
+        app:titleTextColor="#fff"
+        android:id="@+id/toolbar"/>
     <com.google.android.material.tabs.TabLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/tabLayout"
+        app:tabTextColor="#d3d3d0"
         app:tabSelectedTextColor="#fff"
         android:background="@color/colorPrimary"/>
     <androidx.viewpager.widget.ViewPager

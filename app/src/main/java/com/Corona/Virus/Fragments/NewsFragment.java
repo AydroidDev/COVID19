@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.Corona.Virus.Adapters.NewsAdapter;
 import com.Corona.Virus.Interfaces.NewsFeatures;
 import com.Corona.Virus.ModelClasses.Article;
+import com.Corona.Virus.ModelClasses.Example;
 import com.Corona.Virus.R;
 import com.Corona.Virus.SingletonClasses.RetrofitInstance;
 import com.Corona.Virus.Utils.Utils;
@@ -29,37 +30,42 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class NewsFragment extends Fragment {
+    private RecyclerView mRec;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.news_fragment,container,false);
-        initNews(view);
-
+        mRec = view.findViewById(R.id.newsFragmentRecycler);
+        mRec.setLayoutManager(new LinearLayoutManager(view.getContext()));
+        initNews();
         return view;
     }
 
-    private void initNews(final View view) {
+    private void initNews() {
         // API call on every refresh swipe
         NewsFeatures mNewsFeatures = RetrofitInstance.getRetrofit().create(NewsFeatures.class);
-        Call<List<Article>> mCall = mNewsFeatures.getNews(Utils.THEME,Utils.PAGE_SIZE,Utils.LANGUAGE, Utils.SORT_BY,Utils.API_KEY);
-        mCall.enqueue(new Callback<List<Article>>() {
+        Call<Example> mCall = mNewsFeatures.getNews(Utils.THEME,Utils.PAGE_SIZE,Utils.LANGUAGE, Utils.SORT_BY,Utils.API_KEY);
+        mCall.enqueue(new Callback<Example>() {
             @Override
-            public void onResponse(Call<List<Article>> call, Response<List<Article>> response) {
-                addtorecycler(view,response.body());
+            public void onResponse(Call<Example> call, Response<Example> response) {
+                addtorecycler(response.body());
+                Log.e("SUCCESS","DATA FOUND ");
             }
 
             @Override
-            public void onFailure(Call<List<Article>> call, Throwable t) {
+            public void onFailure(Call<Example> call, Throwable t) {
                 Log.e("FAILED",t.getMessage()+"");
             }
         });
 
     }
 
-    private void addtorecycler(View view, List<Article> mList) {
-        RecyclerView recyclerView = view.findViewById(R.id.newsFragmentRecycler);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+    private void addtorecycler(Example Obj) {
+        List<Article> mList = Obj.getArticles();
+        for (Article a: mList){
+            Log.e("DATA",a.getTitle());
+        }
         NewsAdapter adapter = new NewsAdapter(getContext(),mList);
-        recyclerView.setAdapter(adapter);
+        mRec.setAdapter(adapter);
     }
 }
