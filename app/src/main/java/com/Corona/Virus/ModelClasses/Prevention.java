@@ -1,7 +1,5 @@
 package com.Corona.Virus.ModelClasses;
 
-import com.google.gson.annotations.SerializedName;
-
 import java.io.Serializable;
 
 public class Prevention implements Serializable {

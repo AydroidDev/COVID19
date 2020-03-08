@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.Corona.Virus.Activities.DetailedPrevention;
 import com.Corona.Virus.ModelClasses.Myths;
 import com.Corona.Virus.ModelClasses.Prevention;
 import com.Corona.Virus.R;
@@ -70,6 +71,9 @@ public class PreventionFragment extends Fragment {
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    Intent i=new Intent(getContext(), DetailedPrevention.class);
+                    i.putExtra("obj",mObj);
+                    startActivity(i);
 
                     // intent.putExtra("obj",mObj);
                     //getIntent().getSerializableExtra("obj");

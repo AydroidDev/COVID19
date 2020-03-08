@@ -38,7 +38,7 @@
         android:textColor="#000"
         android:textStyle="bold"
         android:paddingRight="10dp"
-        android:textSize="18sp"
+        android:textSize="20sp"
         android:text="Title"
         android:fontFamily="@font/overpass_semibold" />
     <TextView
@@ -47,6 +47,7 @@
         android:id="@+id/descriptionNewsRecycler"
         android:layout_below="@+id/titleNewsRecycler"
         android:layout_marginTop="5dp"
+        android:textSize="15sp"
         android:text="Description"
         android:singleLine="true"
         android:textColor="#000"

@@ -1,5 +1,6 @@
 package com.Corona.Virus.Fragments;
 
+import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,6 +15,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.Corona.Virus.Activities.DetailedMyth;
 import com.Corona.Virus.ModelClasses.Myths;
 import com.Corona.Virus.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -71,6 +73,9 @@ public class MythsFragment extends Fragment {
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    Intent i=new Intent(getContext(), DetailedMyth.class);
+                    i.putExtra("obj",mObj);
+                    startActivity(i);
                     // is file me i.putExtra("obj",mObj);
                     //detailed file me getIntent().getSerializableExtra("obj");
                 }
