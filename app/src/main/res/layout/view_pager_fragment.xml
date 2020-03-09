@@ -8,7 +8,7 @@
     <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:title="CoronaVirus"
+        app:title="Viruses: Everything You Need To Know"
         android:background="@color/colorPrimary"
         app:titleTextColor="#fff"
         android:id="@+id/toolbar"/>

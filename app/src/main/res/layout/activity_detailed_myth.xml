@@ -2,50 +2,116 @@
 <ScrollView android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:ads="http://schemas.android.com/tools">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_margin="10dp"
         app:cardUseCompatPadding="true"
-        android:padding="10dp"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="10dp">
+        android:id="@+id/card"
+        android:layout_height="wrap_content">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:id="@+id/titlelayout"
+                android:layout_marginTop="30dp"
+                android:layout_height="wrap_content">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="40dp"
+                android:layout_marginTop="30dp"
+                android:layout_height="40dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/prevention_bg"
+
+                android:id="@+id/rankingImage"/>
+            <TextView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:text="#1"
+                android:layout_marginTop="30dp"
+                android:layout_centerVertical="true"
+                android:id="@+id/rankingText"
+                android:fontFamily="@font/overpass_semibold"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:textColor="#fff"
+                android:layout_marginLeft="10dp"/>
            <TextView
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
                android:layout_marginLeft="10dp"
                android:textSize="25sp"
+               android:layout_centerVertical="true"
+               android:layout_toRightOf="@id/rankingImage"
                android:textColor="#000"
                android:layout_marginRight="10dp"
                android:fontFamily="@font/overpass_semibold"
                android:id="@+id/detailedRecyclerMythTitle"/>
+            </RelativeLayout>
             <View
                 android:layout_width="wrap_content"
                 android:layout_height="0.8dp"
+                android:layout_marginTop="30dp"
                 android:id="@+id/underlineTheTitle"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_below="@+id/detailedRecyclerMythTitle"
-                android:background="#000"/>
+                android:layout_below="@+id/titlelayout"
+                android:background="#d3d3d3"/>
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="240dp"
                 android:id="@+id/detailedRecyclerItemMythImage"
                 android:scaleType="centerCrop"
                 android:layout_below="@id/underlineTheTitle"
-                android:layout_marginTop="10dp"/>
+               />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/actor"
+                android:fontFamily="@font/overpass"
                 android:padding="10dp"
-                android:textSize="20sp"
+                android:textSize="16sp"
                 android:id="@+id/detailedRecyclerItemMythDescription"
                 android:layout_below="@+id/detailedRecyclerItemMythImage"/>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_below="@id/detailedRecyclerItemMythDescription"
+                android:layout_alignParentEnd="true"
+                >
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/page_increase"
+                    android:id="@+id/increaseSize"/>
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/page_decrease"
+                    android:id="@+id/decreaseSize"
+                    android:layout_toRightOf="@id/increaseSize"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="30dp"/>
+            </RelativeLayout>
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
+        <com.google.android.gms.ads.AdView
+            android:layout_width="320dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/card"
+            android:layout_marginTop="10dp"
+            android:padding="5dp"
+            ads:adSize="BANNER"
+            android:layout_centerHorizontal="true"
+            ads:adUnitId="ca-app-pub-3451872773610798/3667119719"
+            android:id="@+id/mythAd"/>
+    </RelativeLayout>
 </ScrollView>

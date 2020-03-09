@@ -87,7 +87,7 @@ public class PreventionFragment extends Fragment {
             itemView.setOnClickListener(v -> {
                 Intent i=new Intent(getContext(), DetailedPrevention.class);
                 i.putExtra("obj",mObj);
-                i.putExtra("hexcode",hexcode);
+                i.putExtra("hexcode",hexcode+"");
                 startActivity(i);
             });
         }
@@ -103,7 +103,6 @@ public class PreventionFragment extends Fragment {
             drawable.setColor(Color.parseColor(Utils.Colors[val]));
             this.rank.setText(rankString);
             mObj = obj;
-
         }
 
     }

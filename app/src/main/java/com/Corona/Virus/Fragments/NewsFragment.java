@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -24,6 +25,7 @@ import com.Corona.Virus.ModelClasses.Example;
 import com.Corona.Virus.R;
 import com.Corona.Virus.SingletonClasses.RetrofitInstance;
 import com.Corona.Virus.Utils.Utils;
+import com.wang.avi.AVLoadingIndicatorView;
 
 import java.util.List;
 
@@ -35,15 +37,17 @@ import retrofit2.Response;
 public class NewsFragment extends Fragment  implements SwipeRefreshLayout.OnRefreshListener{
     private RecyclerView mRec;
     private SwipeRefreshLayout mSwipe;
+    private AVLoadingIndicatorView progressLoading;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.news_fragment,container,false);
         mSwipe = view.findViewById(R.id.swiperefresh);
         mRec = view.findViewById(R.id.newsFragmentRecycler);
+        progressLoading = view.findViewById(R.id.progressLoading);
         mRec.setLayoutManager(new LinearLayoutManager(view.getContext()));
-        initNews();
-        mSwipe.setOnRefreshListener(this);
+       // initNews();
+        //mSwipe.setOnRefreshListener(this);
         return view;
     }
 
@@ -55,12 +59,14 @@ public class NewsFragment extends Fragment  implements SwipeRefreshLayout.OnRefr
             @Override
             public void onResponse(Call<Example> call, Response<Example> response) {
                 addtorecycler(response.body());
+                progressLoading.setVisibility(View.GONE);
                 Log.e("SUCCESS","DATA FOUND ");
             }
 
             @Override
             public void onFailure(Call<Example> call, Throwable t) {
                 Log.e("FAILED",t.getMessage()+"");
+                progressLoading.setVisibility(View.GONE);
             }
         });
 

@@ -12,9 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Activities.DetailedPrevention"></activity>
-        <activity android:name=".Activities.DetailedMyth" />
-        <activity android:name=".Activities.HomeActivity" />
+        <activity android:name=".Activities.DetailedNews"
+            android:screenOrientation="portrait"
+            ></activity>
+        <activity android:name=".Activities.DetailedPrevention"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".Activities.DetailedMyth"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".Activities.HomeActivity"
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".Activities.MainActivity"
             android:theme="@style/SplashScreen">
@@ -28,6 +34,9 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-3451872773610798~7797936413" />
     </application>
 
 </manifest>

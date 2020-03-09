@@ -40,7 +40,7 @@ public class MythsFragment extends Fragment {
         FirebaseRecyclerAdapter<Myths,MyViewHolder> adapter = new FirebaseRecyclerAdapter<Myths, MyViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull MyViewHolder holder, int position, @NonNull Myths model) {
-            holder.setData(model.getMyth(),model.getImage(),model);
+            holder.setData(model.getMyth(),model.getImage(),model,position+1);
             }
 
             @NonNull
@@ -64,6 +64,7 @@ public class MythsFragment extends Fragment {
         private TextView titleNewsRecycler;
         private ImageView imageNewsRecycler;
         private Myths mObj;
+        private int position;
         private AVLoadingIndicatorView imageProgress;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -75,14 +76,16 @@ public class MythsFragment extends Fragment {
                 public void onClick(View v) {
                     Intent i=new Intent(getContext(), DetailedMyth.class);
                     i.putExtra("obj",mObj);
+                    i.putExtra("position",position+"");
                     startActivity(i);
                 }
             });
         }
 
-        private void setData(String Myth,String image,Myths obj){
+        private void setData(String Myth,String image,Myths obj,int _position){
             imageProgress.show();
             titleNewsRecycler.setText(Myth);
+            position  = _position;
             Picasso.get().load(image).placeholder(R.color.grey).into(imageNewsRecycler, new Callback() {
                 @Override
                 public void onSuccess() {
