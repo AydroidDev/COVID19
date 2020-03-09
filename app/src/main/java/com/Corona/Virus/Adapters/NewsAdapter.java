@@ -1,9 +1,11 @@
 package com.Corona.Virus.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -12,7 +14,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.Corona.Virus.Activities.DetailedNews;
 import com.Corona.Virus.ModelClasses.Article;
+import com.Corona.Virus.ModelClasses.Example;
 import com.Corona.Virus.R;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
@@ -41,7 +45,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         holder.setData(mList.get(position).getTitle(),mList.get(position).getDescription(),mList.get(position).getPublishedAt(),
-                mList.get(position).getUrlToImage());
+                mList.get(position).getUrlToImage(),mList.get(position),position+1);
     }
 
     @Override
@@ -53,6 +57,8 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder> 
         private TextView titleNewsRecycler,descriptionNewsRecycler,publishedDateRecycler;
         private ImageView imageNewsRecycler;
         private View mView;
+        int position;
+        Article example;
         private AVLoadingIndicatorView imageProgress;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -63,13 +69,16 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder> 
             imageNewsRecycler = itemView.findViewById(R.id.imageNewsRecycler);
             imageProgress = itemView.findViewById(R.id.imageProgress);
 
-
             mView.setOnClickListener(v->{
-                Toast.makeText(context, "Clicked", Toast.LENGTH_SHORT).show();
+                Intent i=new Intent(context, DetailedNews.class);
+                i.putExtra("obj",example);
+                i.putExtra("position",position+"");
+                context.startActivity(i);
+                //Toast.makeText(context, "Clicked", Toast.LENGTH_SHORT).show();
             });
         }
 
-        void setData(String title,String desc, String published,String url){
+        void setData(String title, String desc, String published, String url, Article example,int position){
             imageProgress.show();
             String[] dateNTime = published.split("T");
             dateNTime[1] = dateNTime[1].substring(0,dateNTime[1].length()-1);
@@ -87,6 +96,8 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder> 
                     imageProgress.show();
                 }
             });
+            this.example = example;
+            this.position = position;
         }
     }
 }

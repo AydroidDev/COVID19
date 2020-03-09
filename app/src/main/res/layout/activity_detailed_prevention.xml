@@ -53,11 +53,11 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:padding="10dp"
-                    android:layout_marginLeft="5dp"
+                    android:layout_marginStart="5dp"
                     android:textSize="25sp"
                     android:textColor="#000"
                     android:text="Title"
-                    android:layout_toRightOf="@+id/detailedPreventionImageViewRanklayout"
+                    android:layout_toEndOf="@+id/detailedPreventionImageViewRanklayout"
                     android:fontFamily="@font/overpass_semibold"
                     android:id="@+id/detailedPreventionTitle"/>
             </RelativeLayout>
@@ -106,16 +106,16 @@
                 android:layout_below="@+id/sizeVariation"
                 android:layout_marginTop="5dp"
                 android:layout_alignParentEnd="true"
-                android:layout_marginRight="10dp"
+                android:layout_marginEnd="10dp"
                 android:background="@drawable/safe_bg"
                 android:textColor="#fff"
                 android:fontFamily="@font/overpass_semibold"
                 android:textSize="14sp"
-                android:paddingLeft="20dp"
+                android:paddingStart="20dp"
                 android:paddingTop="2dp"
                 android:paddingBottom="2dp"
                 android:gravity="center_horizontal"
-                android:paddingRight="15dp"/>
+                android:paddingEnd="15dp"/>
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -135,9 +135,9 @@
                     android:layout_height="40dp"
                     android:src="@drawable/page_decrease"
                     android:id="@+id/decreaseSize"
-                    android:layout_toRightOf="@id/increaseSize"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginLeft="30dp"/>
+                    android:layout_toEndOf="@id/increaseSize"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginStart="30dp"/>
             </RelativeLayout>
         </RelativeLayout>
     </androidx.cardview.widget.CardView>

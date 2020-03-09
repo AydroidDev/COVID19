@@ -97,7 +97,7 @@
                     android:layout_height="40dp"
                     android:src="@drawable/page_decrease"
                     android:id="@+id/decreaseSize"
-                    android:layout_toRightOf="@id/increaseSize"
+                    android:layout_toRightOf="@+id/increaseSize"
                     android:layout_marginRight="10dp"
                     android:layout_marginLeft="30dp"/>
             </RelativeLayout>

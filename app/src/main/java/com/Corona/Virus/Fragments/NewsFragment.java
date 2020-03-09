@@ -34,38 +34,39 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class NewsFragment extends Fragment  implements SwipeRefreshLayout.OnRefreshListener{
+public class NewsFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
     private RecyclerView mRec;
     private SwipeRefreshLayout mSwipe;
     private AVLoadingIndicatorView progressLoading;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view=inflater.inflate(R.layout.news_fragment,container,false);
+        View view = inflater.inflate(R.layout.news_fragment, container, false);
         mSwipe = view.findViewById(R.id.swiperefresh);
         mRec = view.findViewById(R.id.newsFragmentRecycler);
         progressLoading = view.findViewById(R.id.progressLoading);
         mRec.setLayoutManager(new LinearLayoutManager(view.getContext()));
-       // initNews();
-        //mSwipe.setOnRefreshListener(this);
+        initNews();
+        mSwipe.setOnRefreshListener(this);
         return view;
     }
 
     private void initNews() {
         // API call on every refresh swipe
         NewsFeatures mNewsFeatures = RetrofitInstance.getRetrofit().create(NewsFeatures.class);
-        Call<Example> mCall = mNewsFeatures.getNews(Utils.THEME,Utils.PAGE_SIZE,Utils.LANGUAGE, Utils.SORT_BY,Utils.API_KEY);
+        Call<Example> mCall = mNewsFeatures.getNews(Utils.THEME, Utils.PAGE_SIZE, Utils.LANGUAGE, Utils.SORT_BY, Utils.API_KEY);
         mCall.enqueue(new Callback<Example>() {
             @Override
             public void onResponse(Call<Example> call, Response<Example> response) {
                 addtorecycler(response.body());
                 progressLoading.setVisibility(View.GONE);
-                Log.e("SUCCESS","DATA FOUND ");
+                Log.e("SUCCESS", "DATA FOUND ");
             }
 
             @Override
             public void onFailure(Call<Example> call, Throwable t) {
-                Log.e("FAILED",t.getMessage()+"");
+                Log.e("FAILED", t.getMessage() + "");
                 progressLoading.setVisibility(View.GONE);
             }
         });
@@ -77,20 +78,20 @@ public class NewsFragment extends Fragment  implements SwipeRefreshLayout.OnRefr
 //        for (Article a: mList){
 //            Log.e("DATA",a.getTitle());
 //        }
-        NewsAdapter adapter = new NewsAdapter(getContext(),mList);
+        NewsAdapter adapter = new NewsAdapter(getContext(), mList);
         mRec.setAdapter(adapter);
     }
 
     @Override
     public void onRefresh() {
-        Log.e("Refreshed","");
+        Log.e("Refreshed", "");
         initNews();
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 mSwipe.setRefreshing(false);
             }
-        },2000);
+        }, 2000);
 
 
     }
