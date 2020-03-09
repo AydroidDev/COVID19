@@ -76,8 +76,6 @@ public class MythsFragment extends Fragment {
                     Intent i=new Intent(getContext(), DetailedMyth.class);
                     i.putExtra("obj",mObj);
                     startActivity(i);
-                    // is file me i.putExtra("obj",mObj);
-                    //detailed file me getIntent().getSerializableExtra("obj");
                 }
             });
         }

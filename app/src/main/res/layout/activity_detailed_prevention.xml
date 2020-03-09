@@ -5,59 +5,96 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_margin="10dp"
         app:cardUseCompatPadding="true"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="10dp">
+        >
         <RelativeLayout xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingBottom="10dp"
             tools:context=".Activities.DetailedPrevention">
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:orientation="horizontal"
                 android:padding="15dp"
                 android:id="@+id/headingLayout"
                 android:layout_height="wrap_content">
-                <ImageView
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:id="@+id/detailedPreventionImageViewRanklayout"
+                    android:layout_height="wrap_content">
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:id="@+id/detailedPreventionImageViewRank"
-                    android:background="#d3d3d3"
+                    android:background="@drawable/prevention_bg"
                     />
+
+                    <TextView
+                        android:layout_width="40dp"
+                        android:layout_height="wrap_content"
+                        android:text="#1"
+                        android:gravity="center_horizontal"
+                        android:id="@+id/ranktext"
+                        android:fontFamily="@font/overpass_semibold"
+                        android:textColor="#fff"
+                        android:layout_centerInParent="true"/>
+                </RelativeLayout>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:padding="10dp"
+                    android:layout_marginLeft="5dp"
                     android:textSize="25sp"
+                    android:textColor="#000"
+                    android:text="Title"
+                    android:layout_toRightOf="@+id/detailedPreventionImageViewRanklayout"
                     android:fontFamily="@font/overpass_semibold"
                     android:id="@+id/detailedPreventionTitle"/>
-            </LinearLayout>
+            </RelativeLayout>
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.8dp"
-                android:background="#000"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:background="#d3d3d3"
                 android:id="@+id/linearViewBorder"
                 android:layout_below="@+id/headingLayout"
                 />
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="200dp"
                 android:id="@+id/detailedRecyclerItemPreventionImage"
                 android:scaleType="centerCrop"
-                android:layout_below="@+id/headingLayout"
-                android:layout_marginTop="10dp"/>
+                android:background="#d3d3d3"
+                android:layout_below="@+id/headingLayout" />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:fontFamily="@font/actor"
-                android:textSize="20sp"
+                android:padding="5dp"
+                android:fontFamily="@font/overpass"
+                android:textSize="16sp"
                 android:id="@+id/detailedRecyclerItemPreventionDescription"
                 android:layout_below="@+id/detailedRecyclerItemPreventionImage"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Stay Safe"
+                android:layout_below="@+id/detailedRecyclerItemPreventionDescription"
+                android:layout_marginTop="5dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/safe_bg"
+                android:textColor="#fff"
+                android:fontFamily="@font/overpass_semibold"
+                android:textSize="14sp"
+                android:paddingLeft="20dp"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
+                android:gravity="center_horizontal"
+                android:paddingRight="15dp"/>
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 </ScrollView>

@@ -6,16 +6,32 @@
     app:cardUseCompatPadding="true"
     android:layout_height="wrap_content">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:orientation="horizontal"
         android:layout_height="match_parent">
-    <ImageView
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:id="@+id/ranklayout"
+            android:layout_height="wrap_content">
+    <de.hdodenhof.circleimageview.CircleImageView
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:id="@+id/rank"
-        android:layout_gravity="center"
-        android:src="@drawable/_1"/>
+        android:background="@drawable/prevention_bg"
+        />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="#1"
+                android:id="@+id/ranktext"
+                android:textColor="#fff"
+                android:fontFamily="@font/overpass_semibold"
+                android:textSize="30sp"
+                android:layout_centerInParent="true"/>
+        </RelativeLayout>
+
 
     <TextView
         android:layout_width="match_parent"
@@ -23,6 +39,8 @@
         android:text="Title"
         android:paddingStart="10dp"
         android:paddingEnd="10dp"
+        android:layout_toRightOf="@id/ranklayout"
+        android:layout_centerVertical="true"
         android:fontFamily="@font/overpass_semibold"
         android:id="@+id/titlePrevention"
         android:layout_marginStart="20dp"
@@ -30,6 +48,6 @@
         android:textSize="18sp"
        android:layout_gravity="center"/>
 
-    </LinearLayout>
+    </RelativeLayout>
 
 </androidx.cardview.widget.CardView>
