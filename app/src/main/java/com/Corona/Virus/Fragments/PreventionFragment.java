@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -33,18 +34,26 @@ import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 import com.wang.avi.AVLoadingIndicatorView;
 
+import org.w3c.dom.Text;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class PreventionFragment extends Fragment {
     private RecyclerView mRec;
+    private AVLoadingIndicatorView progressLoading;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.prevention_fragment,container,false);
+
         mRec = view.findViewById(R.id.preventionFragmentRecycler);
+        progressLoading = view.findViewById(R.id.progressLoading);
         mRec.setLayoutManager(new LinearLayoutManager(getContext()));
+
 
         Query query = FirebaseDatabase.getInstance().getReference("prevention").orderByChild("Rank");
         FirebaseRecyclerOptions<Prevention> options = new FirebaseRecyclerOptions.Builder<Prevention>().setQuery(query,Prevention.class).build();
@@ -61,6 +70,7 @@ public class PreventionFragment extends Fragment {
                 return new myViewHolder(v);
             }
         };
+
 
         mRec.setAdapter(adapter);
         try {
@@ -81,6 +91,7 @@ public class PreventionFragment extends Fragment {
         @RequiresApi(api = Build.VERSION_CODES.N)
         public myViewHolder(@NonNull View itemView) {
             super(itemView);
+            progressLoading.setVisibility(View.GONE);
             imageNewsRecycler = itemView.findViewById(R.id.rank);
             title = itemView.findViewById(R.id.titlePrevention);
             rank = itemView.findViewById(R.id.ranktext);

@@ -28,12 +28,15 @@ import com.wang.avi.AVLoadingIndicatorView;
 
 public class MythsFragment extends Fragment {
     private RecyclerView mRec;
+    private AVLoadingIndicatorView progressLoading;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.myths_fragment,container,false);
 
         mRec = view.findViewById(R.id.mythsFragmentRecycler);
+        progressLoading = view.findViewById(R.id.progressLoading);
+
         mRec.setLayoutManager(new LinearLayoutManager(getContext()));
         Query query = FirebaseDatabase.getInstance().getReference("myths").orderByChild("Rank");
         FirebaseRecyclerOptions<Myths> options = new FirebaseRecyclerOptions.Builder<Myths>().setQuery(query,Myths.class).build();
@@ -68,6 +71,7 @@ public class MythsFragment extends Fragment {
         private AVLoadingIndicatorView imageProgress;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
+            progressLoading.setVisibility(View.GONE);
             imageNewsRecycler = itemView.findViewById(R.id.imageNewsRecycler);
             titleNewsRecycler = itemView.findViewById(R.id.titleNewsRecycler);
             imageProgress = itemView.findViewById(R.id.imageProgress);

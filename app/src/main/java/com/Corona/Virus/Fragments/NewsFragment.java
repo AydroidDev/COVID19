@@ -6,8 +6,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -38,6 +40,8 @@ public class NewsFragment extends Fragment implements SwipeRefreshLayout.OnRefre
     private RecyclerView mRec;
     private SwipeRefreshLayout mSwipe;
     private AVLoadingIndicatorView progressLoading;
+    private RelativeLayout nointernetView;
+    private Button tryagain;
 
     @Nullable
     @Override
@@ -46,13 +50,18 @@ public class NewsFragment extends Fragment implements SwipeRefreshLayout.OnRefre
         mSwipe = view.findViewById(R.id.swiperefresh);
         mRec = view.findViewById(R.id.newsFragmentRecycler);
         progressLoading = view.findViewById(R.id.progressLoading);
+        nointernetView = view.findViewById(R.id.nointernetView);
+        tryagain = nointernetView.findViewById(R.id.tryagain);
+        nointernetView.setVisibility(View.GONE);
+        mRec.setVisibility(View.GONE);
         mRec.setLayoutManager(new LinearLayoutManager(view.getContext()));
-        //initNews();
-       // mSwipe.setOnRefreshListener(this);
+        initNews();
+        mSwipe.setOnRefreshListener(this);
         return view;
     }
 
     private void initNews() {
+        progressLoading.setVisibility(View.VISIBLE);
         // API call on every refresh swipe
         NewsFeatures mNewsFeatures = RetrofitInstance.getRetrofit().create(NewsFeatures.class);
         Call<Example> mCall = mNewsFeatures.getNews(Utils.THEME, Utils.PAGE_SIZE, Utils.LANGUAGE, Utils.SORT_BY, Utils.API_KEY);
@@ -61,6 +70,7 @@ public class NewsFragment extends Fragment implements SwipeRefreshLayout.OnRefre
             public void onResponse(Call<Example> call, Response<Example> response) {
                 addtorecycler(response.body());
                 progressLoading.setVisibility(View.GONE);
+                mRec.setVisibility(View.VISIBLE);
                 Log.e("SUCCESS", "DATA FOUND ");
             }
 
@@ -68,6 +78,16 @@ public class NewsFragment extends Fragment implements SwipeRefreshLayout.OnRefre
             public void onFailure(Call<Example> call, Throwable t) {
                 Log.e("FAILED", t.getMessage() + "");
                 progressLoading.setVisibility(View.GONE);
+                nointernetView.setVisibility(View.VISIBLE);
+            }
+        });
+
+
+        tryagain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                initNews();
+                nointernetView.setVisibility(View.GONE);
             }
         });
 
@@ -84,6 +104,7 @@ public class NewsFragment extends Fragment implements SwipeRefreshLayout.OnRefre
 
     @Override
     public void onRefresh() {
+        mRec.setVisibility(View.GONE);
         Log.e("Refreshed", "");
         initNews();
         new Handler().postDelayed(new Runnable() {

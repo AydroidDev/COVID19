@@ -12,6 +12,8 @@
         android:layout_height="match_parent"
         android:id="@+id/newsFragmentRecycler"/>
 
+
+
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 
@@ -22,6 +24,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         android:id="@+id/progressLoading"
+        app:indicatorColor="@color/colorPrimaryDark"
         app:layout_constraintRight_toRightOf="parent"
         app:indicatorName="LineScalePulseOutRapidIndicator"
         />
@@ -50,7 +53,7 @@
         android:layout_below="@id/errornews"
         android:layout_marginTop="10dp"
         android:textAllCaps="false"
-        android:background="@drawable/prevention_bg"
+        android:background="@drawable/published_date_bg"
         android:fontFamily="@font/overpass_semibold"
         android:textColor="#fff"
         android:paddingLeft="40dp"
