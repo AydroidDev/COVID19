@@ -4,11 +4,21 @@ import java.io.Serializable;
 
 public class Myths implements Serializable {
     private String Myth,Reality,Image;
+    private long Rank;
 
-    public Myths(String myth, String reality, String image) {
+    public Myths(String myth, String reality, String image, long rank) {
         Myth = myth;
         Reality = reality;
         Image = image;
+        Rank = rank;
+    }
+
+    public long getRank() {
+        return Rank;
+    }
+
+    public void setRank(long rank) {
+        Rank = rank;
     }
 
     public Myths() {

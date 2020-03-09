@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.TypedValue;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -26,11 +27,11 @@ import java.util.Random;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class DetailedNews extends AppCompatActivity {
-TextView rankingTextNews,detailedRecyclerNewsTitle,detailedRecyclerItemNewsDescription;
-CircleImageView rankingImageNews;
-ImageView detailedRecyclerItemNewsImage,increaseSizeNews,decreaseSizeNews;
-AdView NewsAd;
-float TextSize;
+    private TextView rankingTextNews,detailedRecyclerNewsTitle,detailedRecyclerItemNewsDescription;
+    private CircleImageView rankingImageNews;
+    private ImageView detailedRecyclerItemNewsImage,increaseSizeNews,decreaseSizeNews;
+    private AdView NewsAd;
+    private float TextSize;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,31 +95,23 @@ float TextSize;
         Picasso.get().load(example.getUrlToImage()).into(detailedRecyclerItemNewsImage);
         TextSize =  detailedRecyclerItemNewsDescription.getTextSize();
         Log.e("Text Size: ",TextSize+"");
+
+
         increaseSizeNews.setOnClickListener(v->{
             Log.e("Clicked","Increased");
-            if (TextSize <100) {
-                if (TextSize == 44.0){
-                    TextSize = 18;
-                    Log.e("inside if", "Increased to " + TextSize);
-                    detailedRecyclerItemNewsDescription.setTextSize(TextSize);
-                }
-                else {
-                    TextSize++;
-                    Log.e("inside if", "Increased to " + TextSize);
-                    detailedRecyclerItemNewsDescription.setTextSize(TextSize);
-                }
-
+            if (TextSize < 30) {
+                TextSize++;
+                Log.e("inside if", "Increased to " + TextSize);
+                detailedRecyclerItemNewsDescription.setTextSize(TypedValue.COMPLEX_UNIT_SP,TextSize);
             }
         });
 
         decreaseSizeNews.setOnClickListener(v->{
             Log.e("Clicked","Decreased");
-            if (TextSize>=18){
+            if (TextSize > 18){
                 TextSize--;
                 Log.e("inside if","Decreased to "+TextSize);
-                detailedRecyclerItemNewsDescription.setTextSize(TextSize);
-            }else{
-                TextSize=17;
+                detailedRecyclerItemNewsDescription.setTextSize(TypedValue.COMPLEX_UNIT_SP,TextSize);
             }
 
         });

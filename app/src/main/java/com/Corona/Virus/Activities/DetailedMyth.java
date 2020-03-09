@@ -8,6 +8,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.TypedValue;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,7 +32,7 @@ public class DetailedMyth extends AppCompatActivity {
     private ImageView detailedRecyclerItemMythImage,increaseSize,decreaseSize;
     private CircleImageView rankingImage;
     private AdView mythAd;
-    private float TextSize;
+    private float TextSize=16;
 
 
     @Override
@@ -100,32 +101,24 @@ public class DetailedMyth extends AppCompatActivity {
         detailedRecyclerMythTitle.setText(myths.getMyth());
         detailedRecyclerItemMythDescription.setText(myths.getReality());
         Picasso.get().load(myths.getImage()).into(detailedRecyclerItemMythImage);
-        TextSize =  detailedRecyclerItemMythDescription.getTextSize();
+        //TextSize =  detailedRecyclerItemMythDescription.getTextSize();
         Log.e("Text Size: ",TextSize+"");
 
         increaseSize.setOnClickListener(v->{
             Log.e("Clicked","Increased");
-            if (TextSize <100) {
-                if (TextSize == 44.0){
-                    TextSize = 18;
-                    Log.e("inside if", "Increased to " + TextSize);
-                    detailedRecyclerItemMythDescription.setTextSize(TextSize);
-                }
-                else {
-                    TextSize++;
-                    Log.e("inside if", "Increased to " + TextSize);
-                    detailedRecyclerItemMythDescription.setTextSize(TextSize);
-                }
-
+            if (TextSize < 30) {
+                TextSize++;
+                Log.e("inside if", "Increased to " + TextSize);
+                detailedRecyclerItemMythDescription.setTextSize(TypedValue.COMPLEX_UNIT_SP,TextSize);
             }
         });
 
         decreaseSize.setOnClickListener(v->{
             Log.e("Clicked","Decreased");
-            if (TextSize>=18){
+            if (TextSize > 18){
                 TextSize--;
                 Log.e("inside if","Decreased to "+TextSize);
-                detailedRecyclerItemMythDescription.setTextSize(TextSize);
+                detailedRecyclerItemMythDescription.setTextSize(TypedValue.COMPLEX_UNIT_SP,TextSize);
             }
 
         });

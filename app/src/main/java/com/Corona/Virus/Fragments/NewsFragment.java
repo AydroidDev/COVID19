@@ -47,8 +47,8 @@ public class NewsFragment extends Fragment implements SwipeRefreshLayout.OnRefre
         mRec = view.findViewById(R.id.newsFragmentRecycler);
         progressLoading = view.findViewById(R.id.progressLoading);
         mRec.setLayoutManager(new LinearLayoutManager(view.getContext()));
-        initNews();
-        mSwipe.setOnRefreshListener(this);
+        //initNews();
+       // mSwipe.setOnRefreshListener(this);
         return view;
     }
 

@@ -35,7 +35,7 @@ public class MythsFragment extends Fragment {
 
         mRec = view.findViewById(R.id.mythsFragmentRecycler);
         mRec.setLayoutManager(new LinearLayoutManager(getContext()));
-        Query query = FirebaseDatabase.getInstance().getReference("myths");
+        Query query = FirebaseDatabase.getInstance().getReference("myths").orderByChild("Rank");
         FirebaseRecyclerOptions<Myths> options = new FirebaseRecyclerOptions.Builder<Myths>().setQuery(query,Myths.class).build();
         FirebaseRecyclerAdapter<Myths,MyViewHolder> adapter = new FirebaseRecyclerAdapter<Myths, MyViewHolder>(options) {
             @Override

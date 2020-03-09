@@ -9,6 +9,7 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.TypedValue;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -31,7 +32,7 @@ public class DetailedPrevention extends AppCompatActivity {
     private AVLoadingIndicatorView imageProgress;
     private CircleImageView detailedPreventionImageViewRank;
     private AdView preventionAd;
-    private float TextSize;
+    private float TextSize=18;
 TextView detailedPreventionTitle,detailedRecyclerItemPreventionDescription,ranktext;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +68,7 @@ TextView detailedPreventionTitle,detailedRecyclerItemPreventionDescription,rankt
             }
         });
         this.ranktext.setText("#"+prevention.getRank());
-        TextSize =  detailedRecyclerItemPreventionDescription.getTextSize();
+        //TextSize =  detailedRecyclerItemPreventionDescription.getTextSize();
         Log.e("Text Size: ",TextSize+"");
 
 
@@ -77,31 +78,22 @@ TextView detailedPreventionTitle,detailedRecyclerItemPreventionDescription,rankt
 
         increaseSize.setOnClickListener(v->{
             Log.e("Clicked","Increased");
-            if (TextSize <100) {
-                if (TextSize == 44.0){
-                    TextSize = 18;
-                    Log.e("inside if", "Increased to " + TextSize);
-                    detailedRecyclerItemPreventionDescription.setTextSize(TextSize);
-                }
-                else {
-                    TextSize++;
-                    Log.e("inside if", "Increased to " + TextSize);
-                    detailedRecyclerItemPreventionDescription.setTextSize(TextSize);
-                }
-
+            if (TextSize < 30) {
+                TextSize++;
+                Log.e("inside if", "Increased to " + TextSize);
+                detailedRecyclerItemPreventionDescription.setTextSize(TypedValue.COMPLEX_UNIT_SP,TextSize);
             }
         });
 
         decreaseSize.setOnClickListener(v->{
             Log.e("Clicked","Decreased");
-            if (TextSize>=18){
+            if (TextSize > 18){
                 TextSize--;
                 Log.e("inside if","Decreased to "+TextSize);
-                detailedRecyclerItemPreventionDescription.setTextSize(TextSize);
+                detailedRecyclerItemPreventionDescription.setTextSize(TypedValue.COMPLEX_UNIT_SP,TextSize);
             }
 
         });
-
 
         // AdMob Implementation
 
