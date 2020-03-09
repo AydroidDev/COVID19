@@ -74,7 +74,6 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder> 
                 i.putExtra("obj",example);
                 i.putExtra("position",position+"");
                 context.startActivity(i);
-                //Toast.makeText(context, "Clicked", Toast.LENGTH_SHORT).show();
             });
         }
 

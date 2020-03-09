@@ -68,11 +68,9 @@ TextView detailedPreventionTitle,detailedRecyclerItemPreventionDescription,rankt
             }
         });
         this.ranktext.setText("#"+prevention.getRank());
-        //TextSize =  detailedRecyclerItemPreventionDescription.getTextSize();
         Log.e("Text Size: ",TextSize+"");
 
 
-//        Picasso.get().load(prevention.getImage()).into(detailedRecyclerItemPreventionImage);
         detailedPreventionTitle.setText(prevention.getTitle());
         detailedRecyclerItemPreventionDescription.setText(prevention.getPrevention());
 

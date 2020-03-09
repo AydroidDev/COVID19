@@ -32,7 +32,7 @@ public class DetailedMyth extends AppCompatActivity {
     private ImageView detailedRecyclerItemMythImage,increaseSize,decreaseSize;
     private CircleImageView rankingImage;
     private AdView mythAd;
-    private float TextSize=16;
+    private float TextSize=18;
 
 
     @Override
@@ -101,7 +101,6 @@ public class DetailedMyth extends AppCompatActivity {
         detailedRecyclerMythTitle.setText(myths.getMyth());
         detailedRecyclerItemMythDescription.setText(myths.getReality());
         Picasso.get().load(myths.getImage()).into(detailedRecyclerItemMythImage);
-        //TextSize =  detailedRecyclerItemMythDescription.getTextSize();
         Log.e("Text Size: ",TextSize+"");
 
         increaseSize.setOnClickListener(v->{
