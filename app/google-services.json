@@ -42,6 +42,43 @@
           ]
         }
       }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:241598801684:android:7795d90eb0b23424688401",
+        "android_client_info": {
+          "package_name": "com.know.Virus"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "241598801684-b1ln9ujetgq06uattiim5hhtp5eb84sa.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.know.Virus",
+            "certificate_hash": "0e91da3bee33158bdad8f4fa3fcdf9665a11fc1d"
+          }
+        },
+        {
+          "client_id": "241598801684-53aphi5tcbld40v11196dondutlsp9lh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZW_rGnevMd2zNH0fM8_Pk8AKU0X_P6wg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "241598801684-53aphi5tcbld40v11196dondutlsp9lh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
     }
   ],
   "configuration_version": "1"
