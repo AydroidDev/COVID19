@@ -80,15 +80,15 @@
                 android:scaleType="centerCrop"
                 android:background="#d3d3d3"
                />
+                <com.wang.avi.AVLoadingIndicatorView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:id="@+id/imageProgress"
+                    app:indicatorName="BallPulseIndicator"
+                    />
             </RelativeLayout>
-            <com.wang.avi.AVLoadingIndicatorView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:id="@+id/imageProgress"
-                android:layout_centerHorizontal="true"
-                app:indicatorName="BallPulseIndicator"
-                />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
