@@ -30,7 +30,7 @@ public class DetailedNews extends AppCompatActivity {
     private CircleImageView rankingImageNews;
     private ImageView detailedRecyclerItemNewsImage,increaseSizeNews,decreaseSizeNews;
     private AdView NewsAd;
-    private float TextSize;
+    private float TextSize=18;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,6 +89,7 @@ public class DetailedNews extends AppCompatActivity {
         rankingTextNews.setText("#"+rank);
         GradientDrawable drawable = (GradientDrawable) rankingImageNews.getBackground();
         drawable.setColor(Color.parseColor(Utils.Colors[new Random().nextInt(Utils.Colors.length)]));
+        assert example != null;
         detailedRecyclerNewsTitle.setText(example.getTitle());
         detailedRecyclerItemNewsDescription.setText(example.getDescription());
         Picasso.get().load(example.getUrlToImage()).into(detailedRecyclerItemNewsImage);
@@ -97,7 +98,7 @@ public class DetailedNews extends AppCompatActivity {
 
 
         increaseSizeNews.setOnClickListener(v->{
-            Log.e("Clicked","Increased");
+           Log.e("Clicked","Increased");
             if (TextSize < 30) {
                 TextSize++;
                 Log.e("inside if", "Increased to " + TextSize);
@@ -107,12 +108,15 @@ public class DetailedNews extends AppCompatActivity {
 
         decreaseSizeNews.setOnClickListener(v->{
             Log.e("Clicked","Decreased");
+            if(TextSize>30){
+                TextSize=30;
+            }
             if (TextSize > 18){
                 TextSize--;
                 Log.e("inside if","Decreased to "+TextSize);
                 detailedRecyclerItemNewsDescription.setTextSize(TypedValue.COMPLEX_UNIT_SP,TextSize);
             }
-
         });
     }
 }
+
