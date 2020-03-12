@@ -19,8 +19,8 @@ import com.know.Virus.R;
 import java.util.ArrayList;
 
 public class GridAdapter extends ArrayAdapter<gridContent> {
-    ArrayList<gridContent> list=new ArrayList<>();
-    Context context;
+    private ArrayList<gridContent> list;
+    private Context context;
     int resource;
 
 
@@ -41,12 +41,9 @@ public class GridAdapter extends ArrayAdapter<gridContent> {
         TextView textView=view.findViewById(R.id.gridText);
         imageView.setImageResource(grid.getImageOfTheVirus());
         textView.setText(grid.getTitleOfTheImage());
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(context, "Clicked "+position, Toast.LENGTH_SHORT).show();
-                Log.e("Error Handling in grid ","Clciked this "+position);
-            }
+        view.setOnClickListener(v -> {
+            Toast.makeText(context, "Clicked "+position, Toast.LENGTH_SHORT).show();
+            Log.e("Error Handling in grid ","Clciked this "+position);
         });
         return  view;
     }
