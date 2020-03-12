@@ -27,7 +27,7 @@
             android:fontFamily="@font/alegreya_sans_sc"
             android:id="@+id/gridText"
             android:text="Image of virus"
-            android:layout_height="match_parent"/>
+            android:layout_height="wrap_content"/>
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>
