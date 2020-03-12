@@ -94,8 +94,8 @@ TextView detailedPreventionTitle,detailedRecyclerItemPreventionDescription,rankt
         preventionAd = findViewById(R.id.preventionAd);
         MobileAds.initialize(getApplicationContext());
         AdRequest adRequest = new AdRequest.Builder().build();
-        preventionAd.setAdSize(AdSize.BANNER);
-        preventionAd.setAdUnitId("ca-app-pub-3451872773610798/1437090930");
+//        preventionAd.setAdSize(AdSize.BANNER);
+//        preventionAd.setAdUnitId("ca-app-pub-3451872773610798/1437090930");
         preventionAd.loadAd(adRequest);
         preventionAd.setAdListener(new AdListener(){
 

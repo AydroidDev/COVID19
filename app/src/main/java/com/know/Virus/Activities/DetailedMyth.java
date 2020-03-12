@@ -47,8 +47,8 @@ public class DetailedMyth extends AppCompatActivity {
 
         MobileAds.initialize(getApplicationContext());
         AdRequest adRequest = new AdRequest.Builder().build();
-        mythAd.setAdSize(AdSize.BANNER);
-        mythAd.setAdUnitId("ca-app-pub-3451872773610798/3667119719");
+//        mythAd.setAdSize(AdSize.BANNER);
+//        mythAd.setAdUnitId("ca-app-pub-3451872773610798/3667119719");
         mythAd.loadAd(adRequest);
         mythAd.setAdListener(new AdListener(){
 

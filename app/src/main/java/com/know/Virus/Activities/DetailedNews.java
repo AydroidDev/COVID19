@@ -45,8 +45,8 @@ public class DetailedNews extends AppCompatActivity {
         NewsAd=findViewById(R.id.newsAd);
         MobileAds.initialize(DetailedNews.this);
         AdRequest adRequest = new AdRequest.Builder().build();
-        NewsAd.setAdSize(AdSize.BANNER);
-        NewsAd.setAdUnitId("ca-app-pub-3451872773610798/3667119719");
+//        NewsAd.setAdSize(AdSize.BANNER);
+//        NewsAd.setAdUnitId("ca-app-pub-3451872773610798/3667119719");
         NewsAd.loadAd(adRequest);
         NewsAd.setAdListener(new AdListener(){
             @Override
@@ -93,7 +93,7 @@ public class DetailedNews extends AppCompatActivity {
         detailedRecyclerNewsTitle.setText(example.getTitle());
         detailedRecyclerItemNewsDescription.setText(example.getDescription());
         Picasso.get().load(example.getUrlToImage()).into(detailedRecyclerItemNewsImage);
-        TextSize =  detailedRecyclerItemNewsDescription.getTextSize();
+       // TextSize =  detailedRecyclerItemNewsDescription.getTextSize();
         Log.e("Text Size: ",TextSize+"");
 
 
