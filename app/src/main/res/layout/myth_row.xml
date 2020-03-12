@@ -34,13 +34,13 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/imageNewsRecycler"
             android:layout_marginTop="10dp"
+            android:fontFamily="@font/overpass_semibold"
             android:paddingLeft="10dp"
-            android:textColor="#000"
-            android:textStyle="bold"
             android:paddingRight="10dp"
-            android:textSize="18sp"
             android:text="Title"
-            android:fontFamily="@font/overpass_semibold" />
+            android:textColor="#000"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

@@ -169,7 +169,7 @@ public class PreventionFragment extends Fragment {
             Calendar c = Calendar.getInstance();
             long time = -timestamp;
             time = time *1000;
-            DateFormat df = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
+            DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
             Calendar calobj = Calendar.getInstance();
             calobj.setTimeInMillis(time);
             Log.e("VALUES IN CLICK",mObj.getUrl()+" "+mObj.getName()+" "+mObj.getTimestamp());
