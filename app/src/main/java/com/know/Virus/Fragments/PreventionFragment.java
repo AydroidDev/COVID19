@@ -15,6 +15,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
+import androidx.core.view.ViewCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -49,12 +50,13 @@ public class PreventionFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.prevention_fragment,container,false);
-
         mRec = view.findViewById(R.id.preventionFragmentRecycler);
         progressLoading = view.findViewById(R.id.progressLoading);
         mStories = view.findViewById(R.id.storiesRecycler);
         virusesLabel = view.findViewById(R.id.virusesLabel);
+
         mRec.setLayoutManager(new LinearLayoutManager(getContext()));
+        ViewCompat.setNestedScrollingEnabled(mRec,false);
 
         Query queryStories = FirebaseDatabase.getInstance().getReference("Stories").orderByChild("timestamp");
         mStories.setLayoutManager(new LinearLayoutManager(getContext(),RecyclerView.HORIZONTAL,false));
