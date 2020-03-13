@@ -8,10 +8,9 @@
     android:padding="10dp"
     app:cardUseCompatPadding="true"
     android:id="@+id/gridCustomLayout">
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal"
         >
         <ImageView
             android:layout_width="60dp"
@@ -21,13 +20,20 @@
             android:scaleType="fitXY"/>
         <TextView
             android:layout_width="match_parent"
-            android:layout_gravity="center"
-            android:textAlignment="center"
             android:gravity="center"
+            android:layout_toStartOf="@id/gridColorDesign"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/gridImage"
             android:fontFamily="@font/alegreya_sans_sc"
             android:id="@+id/gridText"
             android:text="Image of virus"
             android:layout_height="wrap_content"/>
-    </LinearLayout>
+        <View
+            android:layout_width="3dp"
+            android:layout_alignParentEnd="true"
+            android:background="#222"
+            android:id="@+id/gridColorDesign"
+            android:layout_height="60dp"/>
 
+    </RelativeLayout>
 </androidx.cardview.widget.CardView>
