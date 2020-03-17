@@ -67,6 +67,8 @@ public class NewsFragment extends Fragment implements SwipeRefreshLayout.OnRefre
                 progressLoading.setVisibility(View.GONE);
                 mRec.setVisibility(View.VISIBLE);
                 Log.e("SUCCESS", "DATA FOUND ");
+                nointernetView.setVisibility(View.GONE);
+                mSwipe.setRefreshing(false);
             }
 
             @Override
@@ -78,13 +80,7 @@ public class NewsFragment extends Fragment implements SwipeRefreshLayout.OnRefre
         });
 
 
-        tryagain.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                initNews();
-                nointernetView.setVisibility(View.GONE);
-            }
-        });
+        tryagain.setOnClickListener(v -> initNews());
 
     }
 
@@ -102,12 +98,7 @@ public class NewsFragment extends Fragment implements SwipeRefreshLayout.OnRefre
         mRec.setVisibility(View.GONE);
         Log.e("Refreshed", "");
         initNews();
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                mSwipe.setRefreshing(false);
-            }
-        }, 2000);
+
 
 
     }
