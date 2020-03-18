@@ -40,6 +40,7 @@ public class GridAdapter extends ArrayAdapter<gridContent> {
         LayoutInflater layoutInflater= LayoutInflater.from(context);
         View view=layoutInflater.inflate(R.layout.custom_category_grid,null,false);
         gridContent grid=list.get(position);
+
         ImageView imageView=view.findViewById(R.id.gridImage);
         TextView textView=view.findViewById(R.id.gridText);
         imageView.setImageResource(grid.getImageOfTheVirus());
