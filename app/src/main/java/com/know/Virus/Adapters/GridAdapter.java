@@ -37,8 +37,8 @@ public class GridAdapter extends ArrayAdapter<gridContent> {
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        LayoutInflater layoutInflater= LayoutInflater.from(context);
-        View view=layoutInflater.inflate(R.layout.custom_category_grid,null,false);
+
+        View view=LayoutInflater.from(context).inflate(R.layout.custom_category_grid,null,false);
         gridContent grid=list.get(position);
 
         ImageView imageView=view.findViewById(R.id.gridImage);
